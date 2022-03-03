@@ -1,25 +1,86 @@
 /* Customize your main colors in :root variables */
 :root {
-  --main-background-color: #343A50;
-  --card-background-color: #51576D;
-  --card-background-lighter-color: #7A7F92;
-  --main-text-color:#F7F6F4;
-  --title-text-color:#3CBA8B;
+  --main-background-color: rgb(34, 44, 50);
+  --card-background-color: rgb(71, 82, 101);
+  --card-background-lighter-color: hsl(218, 13%, 46%);
+  --main-text-color:white;
+  --title-text-color:white;
+  --button-text-color:black;
+  --button-background-color:white;
+}
+
+ html{
+  font-size: 32px;
+}
+
+@font-face {
+    font-family: 'Squarewave';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./fonts/Squarewave-Bold.ttf');
+}
+/* @font-face {
+    font-family: 'ka1';
+    font-style: normal;
+    font-weight: normal;
+    src: local('ka1'), url('./fonts/ka1.woff') format('woff');
+} */
+
+@font-face {
+    font-family: 'Pixolletta8px';
+    font-style: normal;
+    font-weight: normal;
+    /* src: url('./fonts/04B_19__.TTF'); */
+    src: url('./fonts/Pixolletta8px.ttf');
+    /* src: local('Minecraft'), url('./fonts/Minecraft.ttf') format('ttf'); */
+}
+
+@font-face {
+    font-family: '04B_19';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./fonts/04B_19__.TTF');
+    /* src: local('Minecraft'), url('./fonts/Minecraft.ttf') format('ttf'); */
+}
+
+@font-face {
+    font-family: '04B_30';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./fonts/04B_30__.TTF');
+    /* src: local('Minecraft'), url('./fonts/Minecraft.ttf') format('ttf'); */
 }
 
 body{
   background-color:var(--main-background-color);
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.2em;
+  font-family: 'Squarewave', 'Patrick Hand', cursive;
+  /* font-family: 'Press Start 2P', 'Minecraft', 'Patrick Hand', cursive; */
+  font-size: 1rem;
+}
+
+h1{
+  font-family: '04B_30', 'Patrick Hand', cursive;
+}
+
+h2{
+  font-family: 'Squarewave', 'Patrick Hand', cursive;
+}
+
+p{
+  font-family: 'Squarewave', 'Patrick Hand', cursive;
+  font-size: 1rem;
 }
 
 h2, p{
   color: var(--main-text-color);
+  /* font-family: 'Press Start 2P', 'Minecraft', 'Patrick Hand', cursive; */
 }
 
 h3{
 font-weight: normal;
 }
-
-
-
+/* 
+.wallet-adapter-dropdown{
+  background-color: red;
+}
+ */

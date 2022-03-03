@@ -41,6 +41,9 @@ const connection = new anchor.web3.Connection(rpcHost);
 const txTimeout = 30000; // milliseconds (confirm this works for your project)
 
 const theme = createTheme({
+    shape: {
+        borderRadius: 2,
+    },
     palette: {
         type: 'dark',
     },

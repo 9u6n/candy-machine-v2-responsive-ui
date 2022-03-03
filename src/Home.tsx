@@ -27,18 +27,20 @@ const WalletContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 64px;
 `;
 
 const WalletAmount = styled.div`
-  color: black;
+  color: var(--title-text-color);
   width: auto;
   padding: 5px 5px 5px 16px;
   min-width: 48px;
   min-height: auto;
-  border-radius: 22px;
-  background-color: var(--main-text-color);
-  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+  border-radius: 2px;
+  background-color: var(--card-background-color);
+  
   box-sizing: border-box;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-weight: 500;
@@ -58,27 +60,32 @@ const WalletAmount = styled.div`
 
 const Wallet = styled.ul`
   flex: 0 0 auto;
-  margin: 0;
+  margin: 0 0 auto 0;
   padding: 0;
+  height: 64px;
 `;
 
 const ConnectButton = styled(WalletMultiButton)`
-  border-radius: 18px !important;
+  border-radius: 2px !important;
   padding: 6px 16px;
-  background-color: #4E44CE;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
   margin: 0 auto;
+  font-family: 'Squarewave'; 
+  font-size: 1rem;
 `;
 
 const NFT = styled(Paper)`
-  min-width: 400px;
+  min-width: 480px;
   padding: 5px 20px 20px 20px;
   flex: 1 1 auto;
   background-color: var(--card-background-color) !important;
-
+  border-radius: 2px !important;
 `;
 const Des = styled(NFT)`
   text-align: left;
   padding-top: 0px;
+  border-radius: 2px !important;
 `;
 
 const Card = styled(Paper)`
@@ -86,6 +93,7 @@ const Card = styled(Paper)`
   background-color: var(--card-background-lighter-color) !important;
   margin: 5px;
   padding: 24px;
+  width: 15%;
 `;
 
 const MintButtonContainer = styled.div`
@@ -97,56 +105,56 @@ const MintButtonContainer = styled.div`
   button.MuiButton-contained:not(.MuiButton-containedPrimary):focus {
     -webkit-animation: pulse 1s;
     animation: pulse 1s;
+    animation-iteration-count: infinite;
     box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
   }
 
   @-webkit-keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 #ef8f6e;
+      box-shadow: 0 0 0 0 white;
     }
   }
 
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 #ef8f6e;
+      box-shadow: 0 0 0 0 white;
     }
   }
 `;
 
 const Logo = styled.div`
   flex: 0 0 auto;
-
+  
+  height: 64px;
   img {
-    height: 60px;
+    height: 64px;
   }
 `;
 const Menu = styled.ul`
   list-style: none;
-  display: inline-flex;
+  display: flex;
+  margin: 0;
   flex: 1 0 auto;
+  height: 64px;
+  justify-content: flex-end;
 
   li {
     margin: 0 12px;
+    
 
     a {
+      display: flex;
       color: var(--main-text-color);
-      list-style-image: none;
-      list-style-position: outside;
-      list-style-type: none;
+ 
       outline: none;
-      text-decoration: none;
-      text-size-adjust: 100%;
       touch-action: manipulation;
-      transition: color 0.3s;
-      padding-bottom: 15px;
 
       img {
-        max-height: 26px;
+        height: 64px;
       }
     }
 
     a:hover, a:active {
-      color: rgb(131, 146, 161);
       border-bottom: 4px solid var(--title-text-color);
     }
 
@@ -156,13 +164,14 @@ const Menu = styled.ul`
 const SolExplorerLink = styled.a`
   color: var(--title-text-color);
   border-bottom: 1px solid var(--title-text-color);
-  font-weight: bold;
+  
   list-style-image: none;
   list-style-position: outside;
   list-style-type: none;
   outline: none;
   text-decoration: none;
   text-size-adjust: 100%;
+  font-size: 1rem;
 
   :hover {
     border-bottom: 2px solid var(--title-text-color);
@@ -174,8 +183,8 @@ const MainContainer = styled.div`
   flex-direction: column;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-right: 4%;
-  margin-left: 4%;
+  margin-right: 10%;
+  margin-left: 10%;
   text-align: center;
   justify-content: center;
 `;
@@ -196,34 +205,35 @@ const DesContainer = styled.div`
 `;
 
 const Price = styled(Chip)`
-  position: absolute;
-  margin: 5px;
+  border-radius: 2px !important;
+  position: static;
+  margin: 5px 0 5px;
   font-weight: bold;
-  font-size: 1em !important;
+  font-family: 'Pixolletta8px' !important;
+  font-size: 1rem !important;
+  background-color: var(--card-background-lighter-color) !important;
 `;
 
 const Image = styled.img`
-  height: 400px;
+  height: auto;
   width: auto;
-  border-radius: 7px;
-  box-shadow: 5px 5px 40px 5px rgba(0,0,0,0.5);
 `;
 
 const BorderLinearProgress = styled(LinearProgress)`
   margin: 20px 0;
-  height: 10px !important;
-  border-radius: 30px;
+  height: 20px !important;
+  border-radius: 2px;
   border: 2px solid white;
-  box-shadow: 5px 5px 40px 5px rgba(0,0,0,0.5);
+  
   background-color:var(--main-text-color) !important;
   
   > div.MuiLinearProgress-barColorPrimary{
-    background-color:var(--title-text-color) !important;
+    background-color:var(--button-text-color) !important;
   }
 
   > div.MuiLinearProgress-bar1Determinate {
-    border-radius: 30px !important;
-    background-image: linear-gradient(270deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.5));
+    border-radius: 2px !important;
+    background-image: linear-gradient(270deg, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.5));
   }
 `;
 
@@ -483,12 +493,14 @@ const Home = (props: HomeProps) => {
             <MainContainer>
                 <WalletContainer>
                     <Logo><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt=""
-                                                                                                          src="logo.png"/></a></Logo>
+                                                                                                          src="logo.gif"/></a></Logo>
                     <Menu>
-                        <li><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer">Menu 1</a>
+                        <li><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt=""
+                            src="discored-icon.png" /></a>
                         </li>
                         <li><a href="http://localhost:3000/" target="_blank"
-                               rel="noopener noreferrer">Menu 2</a></li>
+                            rel="noopener noreferrer"><img alt=""
+                                src="twitter-icon.png" /></a></li>
                         <li><a href="http://localhost:3000/" target="_blank"
                                rel="noopener noreferrer">Menu 3</a></li>
                     </Menu>
@@ -505,12 +517,12 @@ const Home = (props: HomeProps) => {
                 <MintContainer>
                     <DesContainer>
                         <NFT elevation={3}>
-                            <h2>My NFT</h2>
-                            <br/>
+                            <h2>1-Bit Uncles</h2>
+                            
                             <div><Price
-                                label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " " + priceLabel) : (price + " " + priceLabel)}/><Image
-                                src="cool-cats.gif"
-                                alt="NFT To Mint"/></div>
+                                label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " " + priceLabel) : (price + " " + priceLabel)}/><br/><Image
+                                    src="uncle-list.png"
+                                alt="1-Bit Uncles"/></div>
                             <br/>
                             {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) &&
                               <h3>You have {whitelistTokenBalance} whitelist mint(s) remaining.</h3>}
@@ -598,8 +610,7 @@ const Home = (props: HomeProps) => {
                         </Des>
                         <Des elevation={2}>
                             <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 3</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
+                            <p>Find coin synonyms list of more than 21 words on Pasttenses thesaurus. It conatins accurate other and similar related words for coin in English.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

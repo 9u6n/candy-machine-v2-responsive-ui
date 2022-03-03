@@ -7,10 +7,13 @@ import {CandyMachine} from './candy-machine';
 
 
 export const CTAButton = styled(Button)`
+  border-radius: 2px !important;
   display: block !important;
   margin: 0 auto !important;
-  background-color: var(--title-text-color) !important;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color) !important;
   min-width: 120px !important;
+  font-family: 'Squarewave' !important; 
   font-size: 1em !important;
 `;
 
