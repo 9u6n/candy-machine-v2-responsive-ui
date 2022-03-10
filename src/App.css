@@ -1,12 +1,15 @@
 /* Customize your main colors in :root variables */
 :root {
-  --main-background-color: rgb(34, 44, 50);
-  --card-background-color: rgb(71, 82, 101);
-  --card-background-lighter-color: hsl(218, 13%, 46%);
-  --main-text-color:white;
-  --title-text-color:white;
-  --button-text-color:black;
-  --button-background-color:white;
+  --main-background-color: rgb(49, 58, 73);
+  --card-background-color: rgb(83, 108, 124);
+  /* --card-background-lighter-color: rgb(111, 138, 155); */
+  --card-background-lighter-color: rgb(49, 58, 73);
+  --main-text-color:rgb(231,255,242);
+  --title-text-color:rgb(231,255,242);
+  /* --title-text-color:rgb(246,90,167); */
+  --highlight-color:rgb(246,90,167);
+  --button-text-color:rgb(231,255,242);
+  --button-background-color: rgb(246,90,167);
 }
 
  html{
@@ -64,6 +67,7 @@ h1{
 
 h2{
   font-family: 'Squarewave', 'Patrick Hand', cursive;
+  font-size: 2rem;
 }
 
 p{
@@ -77,10 +81,98 @@ h2, p{
 }
 
 h3{
-font-weight: normal;
+  color: var(--main-text-color);
+  font-weight: normal;
 }
+
+.wallet-adapter-dropdown-list{
+  border-radius: 2px !important;
+  background-color: var(--card-background-color) !important;
+  font-family: 'Squarewave', 'Patrick Hand', cursive !important;
+  gap: .5rem !important;
+  padding: .5rem !important;
+  margin-top: 5px !important;
+}
+
+.wallet-adapter-dropdown-list-item {
+    background: var(--card-background-lighter-color) !important;
+    border-radius: 2px !important;
+    font-size: 1rem !important;
+    height: 1.5rem !important;
+    color: var(--button-text-color) !important;
+}
+
+.wallet-adapter-dropdown-list-item:not([disabled]):hover {
+    color: var(--highlight-color) !important;
+}
+
+.wallet-adapter-modal-wrapper {
+  border-radius: 2px !important;
+  background: var(--card-background-lighter-color) !important;;  
+  font-family: 'Squarewave', 'Patrick Hand', cursive !important;
+
+}
+
+.wallet-adapter-modal-title {
+  color: var(--main-text-color) !important;
+}
+
+.wallet-adapter-button {
+  background-color: var(--card-background-color) !important;
+  border-radius: 2px !important;
+  color: var(--main-text-color) !important;
+  font-family: 'Squarewave', 'Patrick Hand', cursive !important;
+  font-size: 1rem !important;
+}
+
+
+.wallet-adapter-button:not([disabled]):hover {
+    color: var(--highlight-color) !important;
+}
+
+.wallet-adapter-modal-button-close svg {
+    fill: var(--button-text-color) !important;
+}
+
+.wallet-adapter-modal-button-close:hover svg {
+    fill: var(--highlight-color) !important;
+}
+
+
+.wallet-adapter-modal-collapse-button svg {
+    fill: var(--button-text-color) !important;
+}
+
 /* 
-.wallet-adapter-dropdown{
-  background-color: red;
+
+  .wallet-adapter-dropdown-list{
+    color: red;
+  }
+
+  .wallet-adapter-dropdown{
+      background-color: yellow !important;
+  }
+  
+  ul li{
+      background-color: green !important;
+  } */
+
+@media (max-width: 1400px){
+  #MintContainer {
+    flex-direction: column;
+  }
+
+  /* #right-side-header {
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+  } */
 }
- */
+
+
+
+
+
+
+
+
+

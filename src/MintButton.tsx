@@ -10,11 +10,13 @@ export const CTAButton = styled(Button)`
   border-radius: 2px !important;
   display: block !important;
   margin: 0 auto !important;
-  color: var(--button-text-color);
+  color: var(--button-text-color) !important;
   background-color: var(--button-background-color) !important;
-  min-width: 120px !important;
+  width: 8rem !important;
+  
   font-family: 'Squarewave' !important; 
-  font-size: 1em !important;
+  font-size: 1rem !important;
+  
 `;
 
 export const MintButton = ({

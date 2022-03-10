@@ -19,6 +19,9 @@ import {
     CANDY_MACHINE_PROGRAM,
 } from "./candy-machine";
 
+import { Expandable } from './Expandable';
+
+
 const cluster = process.env.REACT_APP_SOLANA_NETWORK!.toString();
 const decimals = process.env.REACT_APP_SPL_TOKEN_TO_MINT_DECIMALS ? +process.env.REACT_APP_SPL_TOKEN_TO_MINT_DECIMALS!.toString() : 9;
 const splTokenName = process.env.REACT_APP_SPL_TOKEN_TO_MINT_NAME ? process.env.REACT_APP_SPL_TOKEN_TO_MINT_NAME.toString() : "TOKEN";
@@ -26,21 +29,33 @@ const splTokenName = process.env.REACT_APP_SPL_TOKEN_TO_MINT_NAME ? process.env.
 const WalletContainer = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-end;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
   height: 64px;
+
+  div{
+    display: flex;
+    flex-direction: row;
+  }
+
+  #right-side-header{
+    justify-content: flex-end;
+    flex-wrap: wrap-reverse;
+    gap: 10px;
+  }
+
 `;
 
 const WalletAmount = styled.div`
-  color: var(--title-text-color);
+  color: var(--main-text-color);
   width: auto;
   padding: 5px 5px 5px 16px;
   min-width: 48px;
   min-height: auto;
   border-radius: 2px;
   background-color: var(--card-background-color);
-  
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
   box-sizing: border-box;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-weight: 500;
@@ -63,21 +78,31 @@ const Wallet = styled.ul`
   margin: 0 0 auto 0;
   padding: 0;
   height: 64px;
+  display: flex;
+  align-items: flex-end;
 `;
 
 const ConnectButton = styled(WalletMultiButton)`
   border-radius: 2px !important;
   padding: 6px 16px;
-  color: var(--button-text-color);
-  background-color: var(--button-background-color);
+  color: var(--button-text-color) !important;
+  background-color: var(--button-background-color) !important;
   margin: 0 auto;
   font-family: 'Squarewave'; 
   font-size: 1rem;
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+
+  :not([disabled]):hover{
+    color: var(--button-text-color) !important;
+  }
 `;
 
 const NFT = styled(Paper)`
-  min-width: 480px;
+  
+  width: auto;
   padding: 5px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
   flex: 1 1 auto;
   background-color: var(--card-background-color) !important;
   border-radius: 2px !important;
@@ -85,15 +110,23 @@ const NFT = styled(Paper)`
 const Des = styled(NFT)`
   text-align: left;
   padding-top: 0px;
+  padding-bottom: 1rem;
   border-radius: 2px !important;
+
+  p {
+      height: 1rem;
+     
+  }
 `;
 
 const Card = styled(Paper)`
   display: inline-block;
+  color: var(--title-text-color) !important;
   background-color: var(--card-background-lighter-color) !important;
   margin: 5px;
-  padding: 24px;
-  width: 15%;
+  font-size: 0.8rem;
+  padding-bottom: .5rem;
+  width: 4rem;
 `;
 
 const MintButtonContainer = styled.div`
@@ -106,18 +139,18 @@ const MintButtonContainer = styled.div`
     -webkit-animation: pulse 1s;
     animation: pulse 1s;
     animation-iteration-count: infinite;
-    box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+    box-shadow: 0 0 .5rem 2rem rgba(246,90,167,0);
   }
 
   @-webkit-keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 white;
+      box-shadow: 0 0 0 0 var(--highlight-color);
     }
   }
 
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 white;
+      box-shadow: 0 0 0 0 var(--highlight-color);
     }
   }
 `;
@@ -130,36 +163,77 @@ const Logo = styled.div`
     height: 64px;
   }
 `;
+
 const Menu = styled.ul`
   list-style: none;
   display: flex;
-  margin: 0;
+  margin: 0 0 0 0;
   flex: 1 0 auto;
   height: 64px;
-  justify-content: flex-end;
+  
+  align-items: flex-end;
 
   li {
     margin: 0 12px;
-    
 
     a {
-      display: flex;
       color: var(--main-text-color);
- 
+      list-style-image: none;
+      list-style-position: outside;
+      list-style-type: none;
       outline: none;
+      text-decoration: none;
+      text-size-adjust: 100%;
       touch-action: manipulation;
+      
+      padding-bottom: 5px;
+
+      display: flex;
+      font-size: 1.2rem;
 
       img {
-        height: 64px;
+        height: 2rem;
       }
     }
 
     a:hover, a:active {
-      border-bottom: 4px solid var(--title-text-color);
+      color: var(--highlight-color);
+      border-bottom: 4px solid var(--highlight-color);
     }
 
   }
 `;
+
+const MediaList = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+
+    a {
+        width: 1.8rem;
+        min-height: 1.5rem;
+        border: 0;
+
+        justify-content: center;
+        display: flex;
+        
+        :hover {
+            background-color: var(--card-background-color);
+            box-shadow: 0px 3px 5px 1px rgb(0 0 0 / 20%);
+        }
+
+        img{
+            display: flex;
+            align-self: center;
+        }
+    }
+`
+
+const ITEMCOUNT = styled.span`
+    color: var(--highlight-color);
+    font-size: 1.5rem;
+`
 
 const SolExplorerLink = styled.a`
   color: var(--title-text-color);
@@ -183,8 +257,8 @@ const MainContainer = styled.div`
   flex-direction: column;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-right: 10%;
-  margin-left: 10%;
+  margin-right: 4%;
+  margin-left: 4%;
   text-align: center;
   justify-content: center;
 `;
@@ -192,8 +266,8 @@ const MainContainer = styled.div`
 const MintContainer = styled.div`
   display: flex;
   flex-direction: row;
-  flex: 1 1 auto;
-  flex-wrap: wrap;
+  
+  align-items: stretch;
   gap: 20px;
 `;
 
@@ -202,14 +276,25 @@ const DesContainer = styled.div`
   flex-direction: column;
   flex: 1 1 auto;
   gap: 20px;
+  
 `;
 
+const NFTContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 20px;
+  min-width: 50%;
+`;
+
+// margin: 5px auto 5px;
 const Price = styled(Chip)`
   border-radius: 2px !important;
-  position: static;
-  margin: 5px 0 5px;
+  position: absolute;
+  margin: -40px 0;
+  color: var(--main-text-color) !important;
   font-weight: bold;
-  font-family: 'Pixolletta8px' !important;
+  font-family: 'Squarewave' !important;
   font-size: 1rem !important;
   background-color: var(--card-background-lighter-color) !important;
 `;
@@ -223,12 +308,12 @@ const BorderLinearProgress = styled(LinearProgress)`
   margin: 20px 0;
   height: 20px !important;
   border-radius: 2px;
-  border: 2px solid white;
+  border: 2px solid var(--main-text-color);
   
   background-color:var(--main-text-color) !important;
   
   > div.MuiLinearProgress-barColorPrimary{
-    background-color:var(--button-text-color) !important;
+    background-color:var(--main-background-color) !important;
   }
 
   > div.MuiLinearProgress-bar1Determinate {
@@ -247,22 +332,27 @@ const ShimmerTitle = styled.h1`
       text-shadow: 0 0 20px var(--main-text-color);
     }
     to {
-      text-shadow: 0 0 30px var(--title-text-color), 0 0 10px var(--title-text-color);
+      text-shadow: 0 0 30px var(--main-text-color), 0 0 10px var(--title-text-color);
     }
   }
 `;
 
-const GoldTitle = styled.h2`
+const GoldTitle = styled.span`
   color: var(--title-text-color);
+  font-size: 2rem;
+  margin-bottom: -0.375rem;
 `;
 
 const LogoAligner = styled.div`
   display: flex;
-  align-items: center;
-
+  align-items: flex-end;
+  gap: .5rem;
+  height: 2rem;
+  margin: 10px auto 0 0;
   img {
-    max-height: 35px;
-    margin-right: 10px;
+    border: 3px solid var(--main-background-color);
+    border-radius: 50%;
+    height: auto;
   }
 `;
 
@@ -492,43 +582,53 @@ const Home = (props: HomeProps) => {
         <main>
             <MainContainer>
                 <WalletContainer>
-                    <Logo><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt=""
-                                                                                                          src="logo.gif"/></a></Logo>
-                    <Menu>
-                        <li><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt=""
-                            src="discored-icon.png" /></a>
-                        </li>
-                        <li><a href="http://localhost:3000/" target="_blank"
-                            rel="noopener noreferrer"><img alt=""
-                                src="twitter-icon.png" /></a></li>
-                        <li><a href="http://localhost:3000/" target="_blank"
-                               rel="noopener noreferrer">Menu 3</a></li>
-                    </Menu>
-                    <Wallet>
-                        {wallet ?
-                            <WalletAmount>{(balance || 0).toLocaleString()} SOL<ConnectButton/></WalletAmount> :
-                            <ConnectButton>Connect Wallet</ConnectButton>}
-                    </Wallet>
+                    <div>
+                        <Logo><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt=""
+                                                                                                            src="logo.gif"/></a></Logo>
+                        <Menu>
+                            <li><a href="#Whitelisting">Whitelisting</a>
+                            </li>
+                            <li><a href="#FAQ">FAQ</a></li>
+                            <li><a href="#About">About</a></li>
+                        </Menu> 
+                    </div>    
+                    <div id="right-side-header">
+                        <MediaList>
+                            <a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img src="discord-icon.png" alt=""></img></a>
+                            <a href="https://twitter.com/1bituncles" target="_blank" rel="noopener noreferrer"><img src="twitter-icon.png" alt=""></img></a>
+                        </MediaList>
+
+                        <Wallet>
+                            {wallet ?
+                                <WalletAmount>{(balance || 0).toLocaleString()} SOL<ConnectButton/></WalletAmount> :
+                                <ConnectButton>Connect Wallet</ConnectButton>}
+                        </Wallet>
+                    </div> 
                 </WalletContainer>
+                <br/>
                 <ShimmerTitle>MINT IS LIVE !</ShimmerTitle>
                 <br/>
 
 
-                <MintContainer>
-                    <DesContainer>
+                <MintContainer id="MintContainer">
+                    <NFTContainer>
                         <NFT elevation={3}>
                             <h2>1-Bit Uncles</h2>
                             
-                            <div><Price
-                                label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " " + priceLabel) : (price + " " + priceLabel)}/><br/><Image
+                            <div>
+                                <Price
+                                label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " " + priceLabel) : (price + " " + priceLabel)}/>
+                                {/* <br/> */}
+                                <Image
                                     src="uncle-list.png"
-                                alt="1-Bit Uncles"/></div>
+                                alt="1-Bit Uncles"/>
+                            </div>
                             <br/>
                             {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) &&
                               <h3>You have {whitelistTokenBalance} whitelist mint(s) remaining.</h3>}
                             {wallet && isActive &&
                                 /* <p>Total Minted : {100 - (itemsRemaining * 100 / itemsAvailable)}%</p>}*/
-                              <h3>TOTAL MINTED : {itemsRedeemed} / {itemsAvailable}</h3>}
+                                <h3>TOTAL MINTED : <ITEMCOUNT>{itemsRedeemed} / {itemsAvailable}</ITEMCOUNT></h3>}
                             {wallet && isActive && <BorderLinearProgress variant="determinate"
                                                                          value={100 - (itemsRemaining * 100 / itemsAvailable)}/>}
                             <br/>
@@ -588,19 +688,20 @@ const Home = (props: HomeProps) => {
                               <SolExplorerLink href={solanaExplorerLink} target="_blank">View on Solana
                                 Explorer</SolExplorerLink>}
                         </NFT>
-                    </DesContainer>
+                    </NFTContainer>
                     <DesContainer>
-                        <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 1</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
+                        <Des id="FAQ" elevation={2}>
+                            <LogoAligner><img src="1BitUncle 007.png" alt=""></img><GoldTitle>FAQ</GoldTitle></LogoAligner>
+                            <p>When does pre-sale start?</p>
+                            <p id="Whitelisting">+ How to get a whitelist spot?</p>
+                            <Expandable title="How much does each '1-Bit Uncle' cost?">
+                                Lorem ipsum dolor sit amet,<a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">consectetur</a>  adipiscing elit, sed do eiusmod tempor
+                                    incididunt.
+                            </Expandable>
+                            <p>Why invest?</p>
                         </Des>
-                        <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 2</GoldTitle></LogoAligner>
+                        <Des id="About" elevation={2}>
+                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>About</GoldTitle></LogoAligner>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
