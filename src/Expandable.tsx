@@ -19,7 +19,7 @@ const ExpandableIcon = styled.span`
     width: 1rem;
 `
 
-const ExpandableContent = styled.div`
+export const ExpandableContent = styled.div`
     margin-left: 1rem;
     color: var(--main-text-color); 
     font-size: 1rem;
@@ -31,6 +31,11 @@ const ExpandableContent = styled.div`
         :hover{
             text-decoration: underline;
         }
+    }
+
+    em{
+        text-decoration: none;
+        color: var(--highlight-color);
     }
 `
 

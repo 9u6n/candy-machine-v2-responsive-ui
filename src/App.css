@@ -1,14 +1,14 @@
 /* Customize your main colors in :root variables */
 :root {
-  --main-background-color: rgb(49, 58, 73);
-  --card-background-color: rgb(83, 108, 124);
+  --main-background-color: rgb(37, 71, 89);
+  --card-background-color: rgb(52, 95, 112);
   /* --card-background-lighter-color: rgb(111, 138, 155); */
-  --card-background-lighter-color: rgb(49, 58, 73);
-  --main-text-color:rgb(231,255,242);
-  --title-text-color:rgb(231,255,242);
+  --card-background-lighter-color: rgb(37, 71, 89);
+  --main-text-color:rgb(195,243,221);
+  --title-text-color:rgb(195,243,221);
   /* --title-text-color:rgb(246,90,167); */
   --highlight-color:rgb(246,90,167);
-  --button-text-color:rgb(231,255,242);
+  --button-text-color:rgb(195,243,221);
   --button-background-color: rgb(246,90,167);
 }
 

@@ -20,6 +20,7 @@ import {
 } from "./candy-machine";
 
 import { Expandable } from './Expandable';
+import { ExpandableContent } from './Expandable';
 
 
 const cluster = process.env.REACT_APP_SOLANA_NETWORK!.toString();
@@ -267,7 +268,6 @@ const MintContainer = styled.div`
   display: flex;
   flex-direction: row;
   
-  align-items: stretch;
   gap: 20px;
 `;
 
@@ -286,6 +286,16 @@ const NFTContainer = styled.div`
   gap: 20px;
   min-width: 50%;
 `;
+
+const NFTTitle = styled.h2`
+  display: inline-block;
+  align-self: center;
+  border-bottom: 5px solid var(--highlight-color);
+`
+
+const SectionText = styled(ExpandableContent)`
+  font-size: 1.2rem;
+`
 
 // margin: 5px auto 5px;
 const Price = styled(Chip)`
@@ -340,7 +350,8 @@ const ShimmerTitle = styled.h1`
 const GoldTitle = styled.span`
   color: var(--title-text-color);
   font-size: 2rem;
-  margin-bottom: -0.375rem;
+  margin-bottom: -0.175rem;
+  border-bottom: 5px solid var(--highlight-color);
 `;
 
 const LogoAligner = styled.div`
@@ -586,8 +597,7 @@ const Home = (props: HomeProps) => {
                         <Logo><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt=""
                                                                                                             src="logo.gif"/></a></Logo>
                         <Menu>
-                            <li><a href="#Whitelisting">Whitelisting</a>
-                            </li>
+                            <li><a href="#Whitelist">Whitelist</a></li>
                             <li><a href="#FAQ">FAQ</a></li>
                             <li><a href="#About">About</a></li>
                         </Menu> 
@@ -613,7 +623,7 @@ const Home = (props: HomeProps) => {
                 <MintContainer id="MintContainer">
                     <NFTContainer>
                         <NFT elevation={3}>
-                            <h2>1-Bit Uncles</h2>
+                            <NFTTitle>1-Bit Uncle NFTs</NFTTitle>
                             
                             <div>
                                 <Price
@@ -621,7 +631,7 @@ const Home = (props: HomeProps) => {
                                 {/* <br/> */}
                                 <Image
                                     src="uncle-list.png"
-                                alt="1-Bit Uncles"/>
+                                alt="1-Bit Uncle NFTs"/>
                             </div>
                             <br/>
                             {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) &&
@@ -692,30 +702,59 @@ const Home = (props: HomeProps) => {
                     <DesContainer>
                         <Des id="FAQ" elevation={2}>
                             <LogoAligner><img src="1BitUncle 007.png" alt=""></img><GoldTitle>FAQ</GoldTitle></LogoAligner>
-                            <p>When does pre-sale start?</p>
-                            <p id="Whitelisting">+ How to get a whitelist spot?</p>
+                            <br />
                             <Expandable title="How much does each '1-Bit Uncle' cost?">
+                                <em>0.15 SOL</em> for pre-sale, <em>0.25 SOL</em> for public mint
+                            </Expandable>
+                            <br />
+                            <Expandable title="When does pre-sale start?">
                                 Lorem ipsum dolor sit amet,<a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">consectetur</a>  adipiscing elit, sed do eiusmod tempor
                                     incididunt.
                             </Expandable>
-                            <p>Why invest?</p>
+                            <br />
+                            <Expandable title="When does public mint start?">
+                                Lorem ipsum dolor sit amet,<a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">consectetur</a>  adipiscing elit, sed do eiusmod tempor
+                                incididunt.
+                            </Expandable>
+                            <br id="Whitelist"/>
+                            <Expandable title="How to get whitelisted?">
+                                Lorem ipsum dolor sit amet,<a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">consectetur</a>  adipiscing elit, sed do eiusmod tempor
+                                    incididunt.
+                            </Expandable>
+                            <br />
+                            <Expandable title="What is the supply?">
+                                There will be <em>2,048</em> 1-Bit Uncle NFTs.
+                            </Expandable>
+                            <br />
                         </Des>
                         <Des id="About" elevation={2}>
                             <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>About</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
+                            <br/>
+                            <SectionText>
+                                <em>1-Bit Uncles</em> is an NFT collection
+                                Created by <a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">9u6n</a>
+                                &nbsp;contained <em>2,048</em> uniquely generated Uncles on the <em>Solana Blockchain</em>. 
+                                <br />
+                                The Uncles are present in two-colors pixels with a wide range of traits.
+                            </SectionText>
+                            <SectionText>
+                                It is a distinctive brand for every collector with an independent vision.
+                            </SectionText>
+                            <br />
+                            <SectionText>
+                                Created by <a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">9u6n</a>.
+                            </SectionText>                            
+                            <br/>
+                            <br/>
                         </Des>
                         <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 3</GoldTitle></LogoAligner>
-                            <p>Find coin synonyms list of more than 21 words on Pasttenses thesaurus. It conatins accurate other and similar related words for coin in English.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
+                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>The Team</GoldTitle></LogoAligner>
+                            <br />
+                            <SectionText>
+                                Created by <a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">9u6n</a>.
+                            </SectionText>
+                            <br />
+                            <br />
                         </Des>
                     </DesContainer>
                 </MintContainer>
