@@ -25,3 +25,4 @@ yarn-error.log*
 !.env.example
 .env copy
 .env
+.env
