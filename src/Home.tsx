@@ -704,7 +704,7 @@ const Home = (props: HomeProps) => {
                             <LogoAligner><img src="1BitUncle 007.png" alt=""></img><GoldTitle>FAQ</GoldTitle></LogoAligner>
                             <br />
                             <Expandable title="How much does each '1-Bit Uncle' cost?">
-                                <em>0.15 SOL</em> for pre-sale, <em>0.25 SOL</em> for public mint
+                                <em>0.25 SOL</em> for whitelist mint, <em>0.35 SOL</em> for public mint
                             </Expandable>
                             <br />
                             <Expandable title="When does pre-sale start?">
