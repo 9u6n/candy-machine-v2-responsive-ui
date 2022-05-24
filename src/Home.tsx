@@ -161,6 +161,8 @@ const Logo = styled.div`
   
   height: 64px;
   img {
+    border: 3px solid var(--main-background-color);
+    border-radius: 50%;
     height: 64px;
   }
 `;
@@ -594,8 +596,8 @@ const Home = (props: HomeProps) => {
             <MainContainer>
                 <WalletContainer>
                     <div>
-                        <Logo><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt=""
-                                                                                                            src="logo.gif"/></a></Logo>
+                        <Logo><a href="https://discord.gg/r9KVehHBZ3" target="_blank" rel="noopener noreferrer"><img alt=""
+                            src="logo 46x.png"/></a></Logo>
                         <Menu>
                             <li><a href="#Whitelist">Whitelist</a></li>
                             <li><a href="#FAQ">FAQ</a></li>
@@ -604,7 +606,7 @@ const Home = (props: HomeProps) => {
                     </div>    
                     <div id="right-side-header">
                         <MediaList>
-                            <a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img src="discord-icon.png" alt=""></img></a>
+                            <a href="https://discord.gg/r9KVehHBZ3" target="_blank" rel="noopener noreferrer"><img src="discord-icon.png" alt=""></img></a>
                             <a href="https://twitter.com/1bituncles" target="_blank" rel="noopener noreferrer"><img src="twitter-icon.png" alt=""></img></a>
                         </MediaList>
 
@@ -630,7 +632,7 @@ const Home = (props: HomeProps) => {
                                 label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " " + priceLabel) : (price + " " + priceLabel)}/>
                                 {/* <br/> */}
                                 <Image
-                                    src="uncle-list.png"
+                                    src="uncle-list.gif"
                                 alt="1-Bit Uncle NFTs"/>
                             </div>
                             <br/>
@@ -701,25 +703,22 @@ const Home = (props: HomeProps) => {
                     </NFTContainer>
                     <DesContainer>
                         <Des id="FAQ" elevation={2}>
-                            <LogoAligner><img src="1BitUncle 007.png" alt=""></img><GoldTitle>FAQ</GoldTitle></LogoAligner>
+                            <LogoAligner><img src="480.png" alt=""></img><GoldTitle>FAQ</GoldTitle></LogoAligner>
                             <br />
                             <Expandable title="How much does each '1-Bit Uncle' cost?">
-                                <em>0.25 SOL</em> for whitelist mint, <em>0.35 SOL</em> for public mint
+                                <em>0.2 SOL</em> for whitelist mint, <em>0.3 SOL</em> for public mint
                             </Expandable>
                             <br />
                             <Expandable title="When does pre-sale start?">
-                                Lorem ipsum dolor sit amet,<a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">consectetur</a>  adipiscing elit, sed do eiusmod tempor
-                                    incididunt.
+                                TBA
                             </Expandable>
                             <br />
                             <Expandable title="When does public mint start?">
-                                Lorem ipsum dolor sit amet,<a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">consectetur</a>  adipiscing elit, sed do eiusmod tempor
-                                incididunt.
+                                TBA
                             </Expandable>
                             <br id="Whitelist"/>
                             <Expandable title="How to get whitelisted?">
-                                Lorem ipsum dolor sit amet,<a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">consectetur</a>  adipiscing elit, sed do eiusmod tempor
-                                    incididunt.
+                                Join our <a href="https://discord.gg/r9KVehHBZ3" target="_blank" rel="noopener noreferrer">discord</a> and get 4 coupons, then you will get whitelisted
                             </Expandable>
                             <br />
                             <Expandable title="What is the supply?">
@@ -728,30 +727,29 @@ const Home = (props: HomeProps) => {
                             <br />
                         </Des>
                         <Des id="About" elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>About</GoldTitle></LogoAligner>
+                            <LogoAligner><img src="801.png" alt=""></img><GoldTitle>About</GoldTitle></LogoAligner>
                             <br/>
                             <SectionText>
                                 <em>1-Bit Uncles</em> is an NFT collection
-                                Created by <a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">9u6n</a>
+                                Created by <a href="https://twitter.com/_9u6n" target="_blank" rel="noopener noreferrer">9u6n</a>
                                 &nbsp;contained <em>1,024</em> uniquely generated Uncles on the <em>Solana Blockchain</em>. 
-                                <br />
+                            </SectionText>
+                            <br/>
+                            <SectionText>
                                 The Uncles are present in two-colors pixels with a wide range of traits.
-                            </SectionText>
-                            <SectionText>
                                 It is a distinctive brand for every collector with an independent vision.
-                            </SectionText>
-                            <br />
-                            <SectionText>
-                                Created by <a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">9u6n</a>.
-                            </SectionText>                            
+                            </SectionText>                         
                             <br/>
                             <br/>
                         </Des>
                         <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>The Team</GoldTitle></LogoAligner>
+                            <LogoAligner><img src="474.png" alt=""></img><GoldTitle>The Team</GoldTitle></LogoAligner>
                             <br />
                             <SectionText>
-                                Created by <a href="https://www.qq.com" target="_blank" rel="noopener noreferrer">9u6n</a>.
+                                Creator: <em>9u6n</em>
+                            </SectionText>
+                            <SectionText>
+                                Community Manager: <em>_Damian</em>, <em>Judith</em>
                             </SectionText>
                             <br />
                             <br />
