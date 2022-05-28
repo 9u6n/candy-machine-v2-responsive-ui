@@ -722,7 +722,7 @@ const Home = (props: HomeProps) => {
                             </Expandable>
                             <br />
                             <Expandable title="What is the supply?">
-                                There will be <em>1,024</em> 1-Bit Uncle NFTs.
+                                There will be <em>2,048</em> 1-Bit Uncle NFTs.
                             </Expandable>
                             <br />
                         </Des>
@@ -732,7 +732,7 @@ const Home = (props: HomeProps) => {
                             <SectionText>
                                 <em>1-Bit Uncles</em> is an NFT collection
                                 Created by <a href="https://twitter.com/_9u6n" target="_blank" rel="noopener noreferrer">9u6n</a>
-                                &nbsp;contained <em>1,024</em> uniquely generated Uncles on the <em>Solana Blockchain</em>. 
+                                &nbsp;contained <em>2,048</em> uniquely generated Uncles on the <em>Solana Blockchain</em>. 
                             </SectionText>
                             <br/>
                             <SectionText>
@@ -749,7 +749,7 @@ const Home = (props: HomeProps) => {
                                 Creator: <em>9u6n</em>
                             </SectionText>
                             <SectionText>
-                                Community Manager: <em>_Damian</em>, <em>Judith</em>
+                                Community Managers: <em>_Damian</em>, <em>Judith</em>
                             </SectionText>
                             <br />
                             <br />
